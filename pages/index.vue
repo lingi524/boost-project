@@ -2,8 +2,6 @@
 import Toggle from '@vueform/toggle'
 const {data: products, refresh} = await useFetch("/api/products");
 
-console.log("GitHub test");
-
 useHead({
     title: "Min egen affär",
     meta: [{name: "description", content: "En beskrivning av min affär"}],
