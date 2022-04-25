@@ -1,5 +1,5 @@
 <script setup>
-import Toggle from '@vueform/toggle'
+import Toggle from '@vueform/toggle';
 const {data: products, refresh} = await useFetch("/api/products");
 
 useHead({
@@ -14,8 +14,16 @@ definePageMeta({
 const filter = ref({});
 
 const productsToShow = computed(() => {
+    console.log(filter.value);
     return products.value.filter(p => p.vegetarian === filter.value.vegetarian)
 });
+
+const allAllergies = products.value
+.map((p) => p.allergies)
+.filter((p) => p)
+.flat();
+
+const allergies = [...new Set(allAllergies)];
 
 </script>
 
@@ -23,14 +31,20 @@ const productsToShow = computed(() => {
     <main>
         <div class="flex flex-col items-center justify-center">
             <h1 class="my-10 text-6xl font-bold">Välkommen till min affär!</h1>
-            <span class="flex flex-row bg-yellow-50">
-            <p>Vegetariskt:</p>
-            <Toggle v-model="filter.vegetarian" class="pl-3"/>
-            </span>
+            <div class="flex flex-row gap-5">
+                <div v-for="allergy in allergies" :key="allergy"  class="flex flex-row">
+                    <p class="mr-4">{{allergy}}:</p>
+                    <Toggle v-model="filter[allergy.toLowerCase()]"/>
+                </div>
+                <span class="inline">
+                Vegetariskt: <Toggle v-model="filter.vegetarian" class="pl-3"/>
+                </span>
+            </div>
         </div>
         <div class="flex flex-wrap mx-auto mt-10">
             <Card v-for="(product, index) in productsToShow" :product="product" :key="index" @deleteProduct="refresh"/>
         </div>
+
         <Form @update-products="refresh" />
     </main>
 </template>
