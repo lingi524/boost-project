@@ -3,12 +3,14 @@ const emit = defineEmits(["update-products"]);
 
 const formData = ref({});
 
+const { $listify } = useNuxtApp();
+
 const submitHandler = async() => {
     const {name, description, image, vegetarian, allergies} = formData.value;
   
   let allergyList;
     if (allergies) {
-        allergyList = allergies.split(",").map((item) => item.trim()); 
+        allergyList = $listify(allergies) ;
     }
 
     const productData = {
@@ -16,7 +18,7 @@ const submitHandler = async() => {
         name,
         description,
         image,
-        vegetarian,
+        vegetarian: vegetarian ?? false,
         allergies: allergyList ?? [],
     };
     
@@ -44,7 +46,7 @@ const submitHandler = async() => {
                 <input v-model="formData.image" id="imageURL" type="text" placeholder="Extern URL" required class="block mb-5 text-gray-700 border"/>
 
                 <label for="vegetarian">Är produkten vegetarisk?</label>
-                <input v-model="formData.vegetarian" type="checkbox" id="vegetarian" required class="block mb-5 text-gray-700 border"/>
+                <input v-model="formData.vegetarian" type="checkbox" id="vegetarian" class="block mb-5 text-gray-700 border"/>
 
                 <label for="allergies">Övriga allergener i kommaseparerad lsita</label>
                 <input v-model="formData.allergies" type="input" id="allergies" placeholder="Ange allergenerna" required class="block mb-5 text-gray-700 border"/>
