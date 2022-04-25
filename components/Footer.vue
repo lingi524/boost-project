@@ -1,5 +1,5 @@
 <template>
-    <footer class="flex items-center justify-between h-20 p-20 text-white bg-orange-300 mt-96">
+    <footer class="flex items-center justify-between h-20 p-20 mt-5 text-white bg-orange-300">
         <span>FOOTER</span>
          <ol>
             <li>Prata med oss</li>

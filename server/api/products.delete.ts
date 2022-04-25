@@ -8,4 +8,6 @@ export default defineEventHandler(async (event) => {
     const updated = products.filter((p) => p.id !== productId);
     
     writeFileSync("server/products.json", JSON.stringify(updated));
+
+    return "Item successfully removed";
   })

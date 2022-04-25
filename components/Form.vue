@@ -1,19 +1,25 @@
 <script setup>
-
 const emit = defineEmits(["update-products"]);
 
 const formData = ref({});
 
 const submitHandler = async() => {
-    const {name, description, image} = formData.value;
+    const {name, description, image, vegetarian, allergies} = formData.value;
+  
+  let allergyList;
+    if (allergies) {
+        allergyList = allergies.split(",").map((item) => item.trim()); 
+    }
 
     const productData = {
         id: `${Math.floor(Math.random()* 10000) + 1000}`,
         name,
         description,
         image,
+        vegetarian,
+        allergies: allergyList ?? [],
     };
-
+    
     try {
     await useFetch("/api/products", {method: "post", body: productData});
     emit("update-products");
@@ -36,6 +42,12 @@ const submitHandler = async() => {
                
                 <label for="imageURL">Bild-URL</label>
                 <input v-model="formData.image" id="imageURL" type="text" placeholder="Extern URL" required class="block mb-5 text-gray-700 border"/>
+
+                <label for="vegetarian">Är produkten vegetarisk?</label>
+                <input v-model="formData.vegetarian" type="checkbox" id="vegetarian" required class="block mb-5 text-gray-700 border"/>
+
+                <label for="allergies">Övriga allergener i kommaseparerad lsita</label>
+                <input v-model="formData.allergies" type="input" id="allergies" placeholder="Ange allergenerna" required class="block mb-5 text-gray-700 border"/>
             </div>
             <Button type="submit">Lägg till</Button>
         </form>

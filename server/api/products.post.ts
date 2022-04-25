@@ -7,5 +7,7 @@ export default defineEventHandler(async (event) => {
     const products = JSON.parse(rawdata.toString());
 
     products.push(product);
-    writeFileSync("server/products.json", JSON.stringify(products))
+    writeFileSync("server/products.json", JSON.stringify(products));
+
+    return "Item successfully added";
   })
