@@ -14,7 +14,6 @@ definePageMeta({
 const filter = ref({});
 
 const productsToShow = computed(() => {
-    console.log(products.value);
     return products.value.filter(p => p.vegetarian === filter.value.vegetarian)
 });
 

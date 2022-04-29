@@ -14,7 +14,6 @@ function addToList() {
 }
 const handleDelete = async () => {
     await useFetch(`https://backend-grocery-api.herokuapp.com/food-items/${props.product.id}`, {method: "delete"});
-    console.log('Försöker deleta')
     emit("deleteProduct");
 }
 </script>
