@@ -31,10 +31,10 @@ const allergies = [...new Set(allAllergies)];
         <div class="flex flex-col items-center justify-center">
             <h1 class="my-10 text-6xl font-bold">Välkommen till min affär!</h1>
             <div class="flex flex-row gap-5">
-                <div v-for="allergy in allergies" :key="allergy"  class="flex flex-row">
+                <!-- <div v-for="allergy in allergies" :key="allergy"  class="flex flex-row">
                     <p class="mr-4">{{allergy}}:</p>
                     <Toggle v-model="filter[allergy.toLowerCase()]"/>
-                </div>
+                </div> -->
                 <span class="inline">
                 Vegetariskt: <Toggle v-model="filter.vegetarian" class="pl-3"/>
                 </span>
