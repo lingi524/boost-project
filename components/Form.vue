@@ -33,13 +33,14 @@ const submitHandler = async() => {
 </script>
 
 <template>
-    <div class="w-1/3 mt-20 mb-20 ml-10">
+    <div class="flex flex-col justify-center pl-10 mx-auto mt-20 mb-2 md:pl-0 md:w-1/3">
         <form @submit.prevent="submitHandler">
+            <h2 class="mb-5 text-5xl font-bold">Lägg till en produkt</h2>
             <div>
                 <label for="name">Produktnamn</label>
                 <input v-model="formData.name" id="name" type="text" placeholder="Coca Cola" required class="block mb-5 text-gray-700 border"/>
                
-                <label for="description">Namn</label>
+                <label for="description">Beskrivning</label>
                 <input v-model="formData.description" id="description" type="text" placeholder="En god dricka" required class="block mb-5 text-gray-700 border"/>
                
                 <label for="imageURL">Bild-URL</label>
@@ -48,10 +49,10 @@ const submitHandler = async() => {
                 <label for="vegetarian">Är produkten vegetarisk?</label>
                 <input v-model="formData.vegetarian" type="checkbox" id="vegetarian" class="block mb-5 text-gray-700 border"/>
 
-                <label for="allergies">Övriga allergener i kommaseparerad lsita</label>
+                <label for="allergies">Övriga allergener i kommaseparerad lista</label>
                 <input v-model="formData.allergies" type="input" id="allergies" placeholder="Ange allergenerna" required class="block mb-5 text-gray-700 border"/>
             </div>
-            <Button type="submit">Lägg till</Button>
+            <Button type="submit">Lägg till produkt</Button>
         </form>
     </div>
 </template>

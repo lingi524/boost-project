@@ -29,7 +29,7 @@ const allergies = [...new Set(allAllergies)];
 <template>
     <main>
         <div class="flex flex-col items-center justify-center">
-            <h1 class="my-10 text-6xl font-bold">Välkommen till min affär!</h1>
+            <h1 class="px-3 my-10 text-6xl font-bold text-center">Välkommen till min affär!</h1>
             <div class="flex flex-row gap-5">
                 <!-- <div v-for="allergy in allergies" :key="allergy"  class="flex flex-row">
                     <p class="mr-4">{{allergy}}:</p>
@@ -40,7 +40,7 @@ const allergies = [...new Set(allAllergies)];
                 </span>
             </div>
         </div>
-        <div class="flex flex-wrap mx-auto mt-10">
+        <div class="flex flex-wrap justify-center mx-auto mt-10">
             <Card v-for="(product, index) in productsToShow" :product="product" :key="index" @deleteProduct="refresh"/>
         </div>
 
