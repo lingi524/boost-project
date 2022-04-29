@@ -12,13 +12,10 @@ const { addToCart } = useCart();
 function addToList() {
     addToCart(props.product);
 }
-const handleDelete = async() => {
-  try {
-    await useFetch("https://backend-grocery-api.herokuapp.com/food-items", {method: "delete", body: props.product.id});
+const handleDelete = async () => {
+    await useFetch(`https://backend-grocery-api.herokuapp.com/food-items/${props.product.id}`, {method: "delete"});
+    console.log('Försöker deleta')
     emit("deleteProduct");
-    } catch (error) {
-        console.log('ERROR');
-    } 
 }
 </script>
 

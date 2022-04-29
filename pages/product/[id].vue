@@ -1,6 +1,6 @@
 <script setup>
 const route = useRoute();
-const {data: product} = await useFetch(`https://backend-grocery-api.herokuapp.com/food-items${route.params.id}`);
+const {data: product} = await useFetch(`https://backend-grocery-api.herokuapp.com/food-items/${route.params.id}`);
 
 definePageMeta({
     middleware: "auth",

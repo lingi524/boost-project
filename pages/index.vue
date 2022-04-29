@@ -1,6 +1,6 @@
 <script setup>
 import Toggle from '@vueform/toggle';
-const {data: products, refresh} = await useFetch("https://backend-grocery-api.herokuapp.com/food-items");
+const {data: products, refresh} = await useFetch("https://backend-grocery-api.herokuapp.com/food-items/");
 
 useHead({
     title: "Min egen affär",
@@ -14,7 +14,7 @@ definePageMeta({
 const filter = ref({});
 
 const productsToShow = computed(() => {
-    console.log(filter.value);
+    console.log(products.value);
     return products.value.filter(p => p.vegetarian === filter.value.vegetarian)
 });
 
