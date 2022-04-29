@@ -1,6 +1,6 @@
 <script setup>
 import Toggle from '@vueform/toggle';
-const {data: products, refresh} = await useFetch("/api/products");
+const {data: products, refresh} = await useFetch("https://backend-grocery-api.herokuapp.com/food-items");
 
 useHead({
     title: "Min egen affär",

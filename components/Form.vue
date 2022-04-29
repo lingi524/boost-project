@@ -23,7 +23,7 @@ const submitHandler = async() => {
     };
     
     try {
-    await useFetch("/api/products", {method: "post", body: productData});
+    await useFetch("https://backend-grocery-api.herokuapp.com/food-items", {method: "post", body: productData});
     emit("update-products");
     formData.value = {};
     } catch (error) {
